@@ -1,0 +1,262 @@
+echo "# Interactive-Fiction" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:Nekoiscute/Interactive-Fiction.git
+git push -u origin master
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void DisplayIntroduction();
+void DisplayCurrentArea();
+int DisplayQuestion1();
+int DisplayQuestion2();
+int DisplayQuestion3();
+void DisplayResult(int finalUserScore);
+
+
+string IntakeStringToProcess(string promptForUser);
+string IntakeNumberToProcess(string promptForUser);
+
+int main()
+{
+	int holdTotalPoints = 0;
+	DisplayIntroduction();
+	DisplayCurrentArea();
+	holdTotalPoints = holdTotalPoints + DisplayQuestion1();
+	holdTotalPoints = holdTotalPoints + DisplayQuestion2();
+	holdTotalPoints = holdTotalPoints + DisplayQuestion3();
+	DisplayResult(holdTotalPoints);
+
+	
+
+	system("pause");
+	return 0;
+}
+
+void DisplayIntroduction()
+{
+	cout << "\n\n\t *** Welcome apprentice to Maescia's Magic Shop ***\n";
+	cout << "\nYou are the new assistant of Maescia who is known for being the best witch in the land.\n";
+	cout << "\nShe brought you to her shop a few months ago and was fascinated by her work.";
+	cout << "\nShe was best know for her healing abilities in all forms and you wanted to know too.\n";
+	cout << "\nAt first she declined to you but eventually she reconsidered due to your persistence.\n\n\n";
+	system("pause");
+}
+
+void DisplayCurrentArea()
+{
+	cout << "\nAt the moment she is showing you around the place and where you will work.";
+	cout << "\nAfter the tour, she got a thick book which is beautifully designed from the shelf and laid it the counter.";
+	cout << "\nI will need you name written in this book, she says.";
+	string apprenticeName;
+	apprenticeName = IntakeStringToProcess("\nPlease write your name on this paper.");
+
+	cout << "\nYou write the name in the book and it starts to glow.";
+	cout << "\nMaescia tells you that your name is real and if it wasn't the back room would be locked to you.";
+
+	//Input the name into the sentence.
+	cout << "Maescia prepares " << apprenticeName << " for a test to see what all she knows.\n";
+}
+
+string IntakeStringToProcess(string promptForUser)
+{
+	//A var
+	string resultFromUserInput = "";
+	//Make sure to have some validation for real or not
+	bool isInputValid = false;
+
+	//Needs a loop
+	do
+	{
+		//User needs a place to put info
+		cout << promptForUser << endl;
+		//A way for user to input info
+		getline(cin, resultFromUserInput);
+		//Make sure its possible
+		if (resultFromUserInput == "")
+		{
+			cout << "\n\n *** I can not read that, please write it again ***\n";
+			isInputValid = false;
+		}
+		else
+		{
+			isInputValid = true;
+		}
+	} while (isInputValid == false);
+
+	//Is able to continue if valid
+	return resultFromUserInput;
+}
+
+string IntakeNumberToProcess(string promptForUser)
+{
+	//A var
+	string resultFromUserInput = "";
+	//Make sure to have some validation for real or not
+	bool isInputValid = false;
+
+	//Needs a loop
+	do
+	{
+		//User needs a place to put info
+		cout << promptForUser << endl;
+		//A way for user to input info
+		getline(cin, resultFromUserInput);
+		//Make sure its possible
+		if (resultFromUserInput == "")
+		{
+			cout << "\n\n *** I can not read that, please write it again ***\n";
+			isInputValid = false;
+		}
+		else
+		{
+			isInputValid = true;
+		}
+	} while (isInputValid == false);
+	//Is able to continue if valid
+
+	return resultFromUserInput;
+}
+
+int DisplayQuestion1()
+{
+	cout << "\nThe owner of the shop leads you to a room with a desk and a sheet of paper on top of the desk.";
+	cout << "\nThe test is about what you already know so that I will know where I should start to teach you.";
+	cout << "\nYou take a seat and look over to see what is all written.";
+	cout << "\nAfter seeing their are only three questions, you take a look at the first question.";
+	cout << "\nWhat are mana potions used for?";
+	cout << "\nThe answers displayed are:";
+	cout << "\n1.) Used to build up stamina";
+	cout << "\n2.) Used to wake up sleeping comrades";
+	cout << "\n3.) Used to restore health";
+	cout << "\n4.) Used to restore magic";
+	string userChoice1 = IntakeNumberToProcess("\nWhat is your answer? \nPlease make a choices of 1, 2, 3, or 4:");
+	//Needs a way to keep up with the correct amount of answers
+	int correctAnswer = 0;
+	if (userChoice1 == "1")
+	{
+		cout << "Your answer glows red letting you know it was the wrong answer.\n";
+	}
+	else if (userChoice1 == "2")
+	{
+		cout << "\nYour answer glows red letting you know it was the wrong answer.";
+	}
+	else if (userChoice1 == "3")
+	{
+		cout << "\nYour answer glows red letting you know it was the wrong answer.";
+	}
+	else if (userChoice1 == "4")
+	{
+		cout << "\nYour answer had a golden glow letting you know it was the right answer.";
+		//add points to the correct answers
+		correctAnswer = +25;
+		//Let user know how many points they earned
+		cout << "\nYou gained " << correctAnswer << " points." << endl;
+
+	}
+	return correctAnswer;
+}
+
+int DisplayQuestion2()
+{
+	cout << "\nThe next question is: What is the most versatile ingredient for making potions?";
+	cout << "\nThe answers:";
+	cout << "\n1.) dragon blood";
+	cout << "\n2.) Newt";
+	cout << "\n3.) Gogo leaves";
+	cout << "\n4.) Toad's breath";
+	string userChoice2 = IntakeNumberToProcess("\nWhat is your answer? \nPlease make a choices of 1, 2, 3, or 4:");
+	//Needs a way to keep up with the correct amount of answers
+	int correctAnswer = 0;
+	if (userChoice2 == "1")
+	{
+		cout << "Your answer glows red letting you know it was the wrong answer.\n";
+	}
+	else if (userChoice2 == "2")
+	{
+		cout << "\nYour answer had a golden glow letting you know it was the right answer.";
+		//add points to the correct answers
+		correctAnswer = +25;
+		//Let user know how many points they earned
+		cout << "\nYou gained " << correctAnswer << " points." << endl;
+	}
+	else if (userChoice2 == "3")
+	{
+		cout << "\nYour answer glows red letting you know it was the wrong answer.";
+	}
+	else if (userChoice2 == "4")
+	{
+		cout << "\nYour answer glows red letting you know it was the wrong answer.";
+	}
+	return correctAnswer;
+}
+
+int DisplayQuestion3()
+{
+	cout << "\nLast question: What is the fundamentals of a curse? ";
+	cout << "\nAnswers:";
+	cout << "\n1.) Curses have a catch.";
+	cout << "\n2.) Curse are used to do bad things.";
+	cout << "\n3.) Curse have a requirement to break.";
+	cout << "\n4.) All of the above";
+	string userChoice1 = IntakeNumberToProcess("\nWhat is your answer? \nPlease make a choices of 1, 2, 3, or 4:");
+	//Needs a way to keep up with the correct amount of answers
+	int correctAnswer = 0;
+	if (userChoice1 == "1")
+	{
+		cout << "Your answer glows red letting you know it was the wrong answer.\n";
+	}
+	else if (userChoice1 == "2")
+	{
+		cout << "\nYour answer glows red letting you know it was the wrong answer.";
+	}
+	else if (userChoice1 == "3")
+	{
+		cout << "\nYour answer glows red letting you know it was the wrong answer.";
+	}
+	else if (userChoice1 == "4")
+	{
+		cout << "\nYour answer had a golden glow letting you know it was the right answer.";
+		//add points to the correct answers
+		correctAnswer = +25;
+		//Let user know how many points they earned
+		cout << "\nYou gained " << correctAnswer << " points." << endl;
+	}
+	return correctAnswer;
+}
+ 
+void DisplayResult(int finalUserScore)
+{
+	//total all of the answers to the test to get the result
+	cout << "\nYour total points are " << finalUserScore << ".";
+	//show the different results by the total of the points earned. There are three different results
+	
+	//anything 0 gets this result
+	if (finalUserScore = 0)
+	{
+		cout << "\nYou know nothing about magic. I guess we will start with the basics.";
+	}
+
+	//score is equal to 25
+	else if(finalUserScore = 25)
+	{
+		cout << "\nYou know little to nothing about magic. I guess we will start with the basics.";
+	}
+	
+	//anything that equals 50 gets this result
+	else if (finalUserScore = 50)
+	{
+		cout << "\nYou know a little bit about magic. ";
+	}
+	//score is equal to 75 gets this result
+	else if (finalUserScore = 75)
+	{
+		cout << "\nYou studied well about magic. So does that mean you know the basic?";
+	}
+	system("pause");
+
+	cout << "\nMaescia went to the back to start the first lesson as her new apprentice.";
+}
